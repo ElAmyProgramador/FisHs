@@ -7,6 +7,7 @@ type Muestra = [Double]
 newtype Promedio = Promedio Double deriving Show
 newtype Varianza = Varianza Double deriving Show
 newtype Desviacion = Desviacion Double deriving Show
+newtype Incertidumbre = Incertidumbre Double deriving Show
 
 -- lista de Double (o Muestra)
 
@@ -35,7 +36,22 @@ desvStd m =
         Just (Varianza v) ->
             Just $ Desviacion (sqrt v)
 
+incertidumbreA :: Muestra -> Maybe Incertidumbre
+incertidumbreA [] = Nothing
+incertidumbreA m =
+    case desvStd m of
+        Nothing -> Nothing
+        Just (Desviacion d) ->
+            let n = sqrt $ fromInteger (longitud m)
+            in Just $ Incertidumbre (d / n)
+
 -- Valor
 
 promedioV :: [Valor] -> Maybe Promedio
 promedioV [] = Nothing
+{-
+promedioV m =
+    let l = fromInteger $ longitud m
+        s = sumatoriaV m
+    in Just $ Promedio (divValores s (Valor l))
+-}
