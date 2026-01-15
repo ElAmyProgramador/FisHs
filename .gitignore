@@ -1,0 +1,14 @@
+# Cabal / GHC build artifacts
+dist-newstyle/
+dist/
+
+# GHC
+*.o
+*.hi
+*.dyn_o
+*.dyn_hi
+
+# Editor / OS
+*~
+.DS_Store
+

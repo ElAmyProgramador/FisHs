@@ -1,20 +1,11 @@
+module FisHs.Estadistica where
+import FisHs.Core
+
 type Muestra = [Double]
 
 newtype Promedio = Promedio Double deriving Show
 newtype Varianza = Varianza Double deriving Show
 newtype Desviacion = Desviacion Double deriving Show
-
--- funciones de uso general o básicas
-
-sumatoria :: Muestra -> Double
-sumatoria [] = 0
-sumatoria (x:xs) = x + sumatoria xs
-
-longitud :: [a] -> Integer
-longitud [] = 0
-longitud (_:xs) = 1 + longitud xs
-
--- funciones de estadistica
 
 promedio :: Muestra -> Maybe Promedio
 promedio [] = Nothing
