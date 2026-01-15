@@ -1,11 +1,14 @@
 module FisHs.Estadistica where
 import FisHs.Core
+import FisHs.Types
 
 type Muestra = [Double]
 
 newtype Promedio = Promedio Double deriving Show
 newtype Varianza = Varianza Double deriving Show
 newtype Desviacion = Desviacion Double deriving Show
+
+-- lista de Double (o Muestra)
 
 promedio :: Muestra -> Maybe Promedio
 promedio [] = Nothing
@@ -31,3 +34,8 @@ desvStd m =
         Nothing -> Nothing
         Just (Varianza v) ->
             Just $ Desviacion (sqrt v)
+
+-- Valor
+
+promedioV :: [Valor] -> Maybe Promedio
+promedioV [] = Nothing
