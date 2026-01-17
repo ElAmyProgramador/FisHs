@@ -9,7 +9,7 @@ longitud :: [a] -> Integer
 longitud [] = 0
 longitud (_:xs) = 1 + longitud xs
 
--- Valor
+-- Artimetica
 
 sumaValores :: Valor -> Valor -> Valor
 sumaValores (Valor a) (Valor b) = Valor (a + b)
@@ -17,8 +17,11 @@ sumaValores (Valor a) (Valor b) = Valor (a + b)
 restaValores :: Valor -> Valor -> Valor
 restaValores (Valor a) (Valor b) = Valor (a - b)
 
+multV :: Valor -> Valor -> Valor
+multV (Valor a) (Valor b) = Valor (a * b)
+
 escalar :: Double -> Valor -> Valor
-escalar 0 (Valor a) = Valor 0
+escalar 0 (Valor _) = Valor 0
 escalar lambda (Valor a) = Valor (lambda * a)
 
 divValores :: Valor -> Valor -> Maybe Valor

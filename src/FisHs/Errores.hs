@@ -1,4 +1,9 @@
 module FisHs.Errores where
+import FisHs.Core
+import FisHs.Types
+import FisHs.Estadistica
 
-newtype ErrorAbs = ErrorAbs Double deriving Show
-newtype ErrorRel = ErrorRel Double deriving Show
+newtype ErrorAbs = ErrorAbs Valor deriving Show
+newtype ErrorRel = ErrorRel Valor deriving Show
+
+
