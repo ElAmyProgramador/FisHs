@@ -41,3 +41,18 @@ cuadradoV (Valor x) = Valor (x * x)
 
 sqrtV :: Valor -> Valor
 sqrtV (Valor a) = Valor (sqrt a)
+
+absV :: Valor -> Valor
+absV (Valor a) = Valor $ abs a
+
+-- Comparación
+
+maxV :: Valor -> Valor -> Valor
+maxV (Valor a) (Valor b)
+    | a > b = Valor a
+    | otherwise = Valor b
+
+minV :: Valor -> Valor -> Valor
+minV (Valor a) (Valor b)
+    | a < b = Valor a
+    | otherwise = Valor b
