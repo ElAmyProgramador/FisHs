@@ -32,3 +32,9 @@ listaValor l = map (\x -> Valor x) l
 sumatoriaV :: [Valor] -> Valor
 sumatoriaV [] = Valor 0
 sumatoriaV (x:xs) = sumaValores x (sumatoriaV xs)
+
+cuadradoV :: Valor -> Valor
+cuadradoV (Valor x) = Valor (x * x)
+
+sqrtV :: Valor -> Valor
+sqrtV (Valor a) = Valor (sqrt a)
