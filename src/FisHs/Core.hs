@@ -32,6 +32,10 @@ listaV :: [Double] -> [Valor]
 listaV [] = []
 listaV l = map (\x -> Valor x) l
 
+listaM :: [Double] -> Muestra
+listaM [] = Muestra []
+listaM l = Muestra $ listaV l
+
 sumatoriaV :: [Valor] -> Valor
 sumatoriaV [] = Valor 0
 sumatoriaV (x:xs) = sumaV x (sumatoriaV xs)
