@@ -12,31 +12,27 @@ promedio (Muestra []) = Nothing
 promedio (Muestra m) =
     let s = sumatoriaV m
         l = Valor $ fromIntegral (longitud m)
-    in Promedio <$> divValores s l
+    in Promedio <$> divV s l
 
 varianza :: Muestra -> Maybe Varianza
 varianza (Muestra []) = Nothing
-varianza (Muestra m) =
-    case promedio (Muestra m) of
-        Nothing -> Nothing
-        Just (Promedio p) ->
-            let a = map (\x -> cuadradoV (restaValores x p)) m
-                n = Valor (fromIntegral (longitud m))
-            in Varianza <$> divValores (sumatoriaV a) n
+varianza (Muestra m) = do
+    Promedio p <- promedio (Muestra m)
+    let a = map (\x -> cuadradoV (restaV x p)) m
+        n = Valor $ fromIntegral (longitud m)
+    v <- divV (sumatoriaV a) n
+    return $ Varianza v
 
 desvStd :: Muestra -> Maybe Desviacion
 desvStd (Muestra []) = Nothing
-desvStd (Muestra m) =
-    case varianza (Muestra m) of
-        Nothing -> Nothing
-        Just (Varianza v) ->
-            Just $ Desviacion (sqrtV v)
+desvStd (Muestra m) = do
+    Varianza v <- varianza (Muestra m)
+    return $ Desviacion (sqrtV v)
 
 incertidumbreA :: Muestra -> Maybe Incertidumbre
 incertidumbreA (Muestra []) = Nothing
-incertidumbreA (Muestra m) =
-    case desvStd (Muestra m) of
-        Nothing -> Nothing
-        Just (Desviacion d) ->
-            let n = Valor $ sqrt (fromIntegral (longitud m))
-            in Incertidumbre <$> (divValores d n)
+incertidumbreA (Muestra m) = do
+    Desviacion desv <- desvStd (Muestra m)
+    let n = Valor $ sqrt (fromIntegral (longitud m))
+    di <- divV desv n
+    return $ Incertidumbre di

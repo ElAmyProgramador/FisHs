@@ -14,8 +14,8 @@ longitud (_:xs) = 1 + longitud xs
 sumaValores :: Valor -> Valor -> Valor
 sumaValores (Valor a) (Valor b) = Valor (a + b)
 
-restaValores :: Valor -> Valor -> Valor
-restaValores (Valor a) (Valor b) = Valor (a - b)
+restaV :: Valor -> Valor -> Valor
+restaV (Valor a) (Valor b) = Valor (a - b)
 
 multV :: Valor -> Valor -> Valor
 multV (Valor a) (Valor b) = Valor (a * b)
@@ -24,13 +24,13 @@ escalar :: Double -> Valor -> Valor
 escalar 0 (Valor _) = Valor 0
 escalar lambda (Valor a) = Valor (lambda * a)
 
-divValores :: Valor -> Valor -> Maybe Valor
-divValores (Valor _) (Valor 0) = Nothing
-divValores (Valor a) (Valor b) = Just $ Valor (a / b)
+divV :: Valor -> Valor -> Maybe Valor
+divV (Valor _) (Valor 0) = Nothing
+divV (Valor a) (Valor b) = Just $ Valor (a / b)
 
-listaValor :: [Double] -> [Valor]
-listaValor [] = []
-listaValor l = map (\x -> Valor x) l
+listaV :: [Double] -> [Valor]
+listaV [] = []
+listaV l = map (\x -> Valor x) l
 
 sumatoriaV :: [Valor] -> Valor
 sumatoriaV [] = Valor 0
