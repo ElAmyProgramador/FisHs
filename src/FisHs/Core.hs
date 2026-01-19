@@ -11,8 +11,8 @@ longitud (_:xs) = 1 + longitud xs
 
 -- Artimetica
 
-sumaValores :: Valor -> Valor -> Valor
-sumaValores (Valor a) (Valor b) = Valor (a + b)
+sumaV :: Valor -> Valor -> Valor
+sumaV (Valor a) (Valor b) = Valor (a + b)
 
 restaV :: Valor -> Valor -> Valor
 restaV (Valor a) (Valor b) = Valor (a - b)
@@ -34,7 +34,7 @@ listaV l = map (\x -> Valor x) l
 
 sumatoriaV :: [Valor] -> Valor
 sumatoriaV [] = Valor 0
-sumatoriaV (x:xs) = sumaValores x (sumatoriaV xs)
+sumatoriaV (x:xs) = sumaV x (sumatoriaV xs)
 
 cuadradoV :: Valor -> Valor
 cuadradoV (Valor x) = Valor (x * x)
