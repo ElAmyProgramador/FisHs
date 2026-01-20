@@ -5,3 +5,9 @@ newtype Metro = Metro Double
 newtype Kilogramo = Kilogramo Double
 newtype Valor = Valor Double deriving (Show, Eq, Ord)
 newtype Muestra = Muestra [Valor] deriving Show
+
+data ErrorFis
+    = MuestraVacia
+    | DivisionSobreCero
+    | ValorEsperadoCero
+    deriving (Show)

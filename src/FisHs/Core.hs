@@ -21,12 +21,13 @@ multV :: Valor -> Valor -> Valor
 multV (Valor a) (Valor b) = Valor (a * b)
 
 escalar :: Double -> Valor -> Valor
-escalar 0 (Valor _) = Valor 0
-escalar lambda (Valor a) = Valor (lambda * a)
+escalar lambda (Valor a)
+    | lambda == 0 = Valor 0
+    | otherwise = Valor (lambda * a)
 
-divV :: Valor -> Valor -> Maybe Valor
-divV (Valor _) (Valor 0) = Nothing
-divV (Valor a) (Valor b) = Just $ Valor (a / b)
+divV :: Valor -> Valor -> Either ErrorFis Valor
+divV (Valor _) (Valor 0) = Left DivisionSobreCero
+divV (Valor a) (Valor b) = Right $ Valor (a / b)
 
 listaV :: [Double] -> [Valor]
 listaV [] = []
