@@ -3,8 +3,10 @@ import FisHs.Core
 import FisHs.Types
 import FisHs.Estadistica
 
-newtype ErrorAbs = ErrorAbs Valor deriving Show
-newtype ErrorRel = ErrorRel Valor deriving Show
+newtype ErrorAbs = ErrorAbs
+    {getErrorAbs :: Valor} deriving (Show, Eq)
+newtype ErrorRel = ErrorRel
+    {getErrorRel :: Valor} deriving (Show, Eq)
 
 errorAbs :: Muestra -> Valor -> Either ErrorFis ErrorAbs
 errorAbs (Muestra []) _ = Left MuestraVacia
